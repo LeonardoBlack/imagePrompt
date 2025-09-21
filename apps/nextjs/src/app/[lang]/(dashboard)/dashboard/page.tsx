@@ -10,6 +10,12 @@ import {
   TableRow,
 } from "@saasfly/ui/table";
 
+import { StatsCards } from "~/components/dashboard/stats-cards";
+import { RecentActivity } from "~/components/dashboard/recent-activity";
+import { QuickActions } from "~/components/dashboard/quick-actions";
+import { WelcomeAnimation } from "~/components/dashboard/welcome-animation";
+import { SimpleWelcome } from "~/components/dashboard/simple-welcome";
+import { SimpleFloatingActions } from "~/components/ui/simple-floating-actions";
 import { EmptyPlaceholder } from "~/components/empty-placeholder";
 import { DashboardHeader } from "~/components/header";
 import { K8sCreateButton } from "~/components/k8s/cluster-create-button";
@@ -53,12 +59,41 @@ export default async function DashboardPage({
     return (
       <DashboardShell>
         <DashboardHeader
-          heading="kubernetes"
+          heading="Dashboard"
           text={dict.common.dashboard.title_text}
         >
           <K8sCreateButton dict={dict.business} />
         </DashboardHeader>
+        
+        {/* Welcome Animation */}
+        <div className="mb-6">
+          <SimpleWelcome userName={user.name || "User"} dict={dict} />
+        </div>
+
+        {/* Stats Cards */}
+        <div className="mb-8">
+          <StatsCards dict={dict} />
+        </div>
+
+        {/* Quick Actions */}
+        <div className="mb-8">
+          <QuickActions dict={dict} />
+        </div>
+
+        {/* Recent Activity */}
+        <div className="mb-8">
+          <RecentActivity dict={dict} />
+        </div>
+
+        {/* Kubernetes Clusters */}
         <div>
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold">Kubernetes Clusters</h3>
+            <p className="text-sm text-muted-foreground">
+              Manage your container orchestration clusters
+            </p>
+          </div>
+          
           {clusters.length ? (
             <div className="divide-y divide-border rounded-md border">
               <div className="flex items-center justify-between p-4">
@@ -95,8 +130,12 @@ export default async function DashboardPage({
               <K8sCreateButton variant="outline" dict={dict.business} />
             </EmptyPlaceholder>
           )}
-        </div>
-      </DashboardShell>
+  </div>
+      </div>
+
+      {/* Floating Actions */}
+      <SimpleFloatingActions dict={dict} />
+    </DashboardShell>
     );
   }
 }
