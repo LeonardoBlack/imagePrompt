@@ -23,6 +23,7 @@ export const Key = Lucide.Key;
 export const Languages = Lucide.Languages;
 export const Laptop = Lucide.Laptop;
 export const Logo = Lucide.Command;
+export const Mail = Lucide.Mail;
 export const Menu = Lucide.Menu;
 export const Moon = Lucide.Moon;
 export const Organization = Lucide.Building;

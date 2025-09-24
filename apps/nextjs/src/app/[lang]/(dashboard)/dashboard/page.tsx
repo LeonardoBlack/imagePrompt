@@ -130,12 +130,11 @@ export default async function DashboardPage({
               <K8sCreateButton variant="outline" dict={dict.business} />
             </EmptyPlaceholder>
           )}
-  </div>
-      </div>
+        </div>
 
       {/* Floating Actions */}
       <SimpleFloatingActions dict={dict} />
     </DashboardShell>
-    );
+  );
   }
 }

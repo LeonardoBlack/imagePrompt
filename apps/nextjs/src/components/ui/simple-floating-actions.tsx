@@ -9,12 +9,6 @@ import {
   HelpCircle
 } from "lucide-react";
 import { Button } from "@saasfly/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@saasfly/ui/tooltip";
 
 interface SimpleFloatingActionsProps {
   dict?: any;
@@ -59,70 +53,57 @@ export function SimpleFloatingActions({ dict }: SimpleFloatingActionsProps) {
   ];
 
   return (
-    <TooltipProvider>
-      <div className="fixed bottom-6 right-6 z-50">
-        {showScrollTop && (
-          <div className="mb-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <Tooltip>
-              <TooltipTrigger asChild>
+    <div className="fixed bottom-6 right-6 z-50">
+      {showScrollTop && (
+        <div className="mb-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <Button
+            size="icon"
+            className="rounded-full shadow-lg bg-gray-700 hover:bg-gray-800"
+            onClick={scrollToTop}
+            title="Scroll to top"
+          >
+            <ArrowUp className="h-5 w-5" />
+          </Button>
+        </div>
+      )}
+
+      <div className="relative">
+        {isOpen && (
+          <div className="absolute bottom-16 right-0 space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-200">
+            {actions.map((action, index) => (
+              <div
+                key={action.label}
+                className="animate-in fade-in slide-in-from-right-2 duration-300"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <Button
                   size="icon"
-                  className="rounded-full shadow-lg bg-gray-700 hover:bg-gray-800"
-                  onClick={scrollToTop}
+                  className={`rounded-full shadow-lg ${action.color} text-white`}
+                  onClick={action.onClick}
+                  title={action.label}
                 >
-                  <ArrowUp className="h-5 w-5" />
+                  <action.icon className="h-5 w-5" />
                 </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Scroll to top</p>
-              </TooltipContent>
-            </Tooltip>
+              </div>
+            ))}
           </div>
         )}
 
-        <div className="relative">
-          {isOpen && (
-            <div className="absolute bottom-16 right-0 space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-200">
-              {actions.map((action, index) => (
-                <div
-                  key={action.label}
-                  className="animate-in fade-in slide-in-from-right-2 duration-300"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        size="icon"
-                        className={`rounded-full shadow-lg ${action.color} text-white`}
-                        onClick={action.onClick}
-                      >
-                        <action.icon className="h-5 w-5" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent side="left">
-                      <p>{action.label}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <Button
-            size="icon"
-            className="rounded-full shadow-lg bg-primary hover:bg-primary/90"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div className={`transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <MessageCircle className="h-6 w-6" />
-              )}
-            </div>
-          </Button>
-        </div>
+        <Button
+          size="icon"
+          className="rounded-full shadow-lg bg-primary hover:bg-primary/90"
+          onClick={() => setIsOpen(!isOpen)}
+          title={isOpen ? "Close menu" : "Open menu"}
+        >
+          <div className={`transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
+            {isOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <MessageCircle className="h-6 w-6" />
+            )}
+          </div>
+        </Button>
       </div>
-    </TooltipProvider>
+    </div>
   );
 }

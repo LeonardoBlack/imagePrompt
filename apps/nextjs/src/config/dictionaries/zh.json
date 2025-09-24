@@ -83,9 +83,11 @@
     "singup_title": "还没有账户？立即注册。",
     "signin_email": "用电子邮件登录",
     "signin_others": "或者继续使用",
+    "signin_google": "使用 Google 登录",
     "signup": "注册",
     "privacy": "只有您的电子邮件和头像会被存储。",
     "signup_github": "使用 Github 注册",
+    "signup_google": "使用 Google 注册",
     "": ""
   },
   "common": {
