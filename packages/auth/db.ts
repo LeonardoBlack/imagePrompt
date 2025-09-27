@@ -1,4 +1,5 @@
-import { createKysely } from "@vercel/postgres-kysely";
+import { Kysely, PostgresDialect } from "kysely";
+import { Pool } from "pg";
 import type { GeneratedAlways } from "kysely";
 
 interface Database {
@@ -36,4 +37,16 @@ interface Database {
   };
 }
 
-export const db = createKysely<Database>();
+const connectionString = process.env.POSTGRES_URL;
+
+if (!connectionString) {
+  throw new Error("POSTGRES_URL environment variable is not set");
+}
+
+export const db = new Kysely<Database>({
+  dialect: new PostgresDialect({
+    pool: new Pool({
+      connectionString,
+    }),
+  }),
+});

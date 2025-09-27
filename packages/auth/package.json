@@ -13,6 +13,10 @@
   "dependencies": {
     "@auth/kysely-adapter": "0.4.2",
     "@saasfly/db": "workspace:*",
+    "@saasfly/common": "workspace:*",
+    "pg": "8.11.3",
+    "kysely": "0.27.3",
+    "nanoid": "5.0.7",
     "@t3-oss/env-nextjs": "0.8.0",
     "next": "14.2.5",
     "next-auth": "4.24.7",
