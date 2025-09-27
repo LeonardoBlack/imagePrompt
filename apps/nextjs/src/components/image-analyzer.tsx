@@ -32,8 +32,10 @@ export function ImageAnalyzer({ onPromptGenerated }: ImageAnalyzerProps) {
 
     setIsAnalyzing(true);
     try {
+      // 使用用户提供的工作流ID
       const result = await api.coze.analyzeImage.mutate({
         imageUrl,
+        workflowId: "7552453818337689652", // 用户提供的固定工作流ID
       });
 
       if (result.success && result.prompt) {
