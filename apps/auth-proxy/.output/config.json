@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "overrides": {},
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/__nitro"
+    }
+  ],
+  "functions": {
+    "api/auth/**/*.ts": {
+      "runtime": "nodejs22.x"
+    }
+  }
+}

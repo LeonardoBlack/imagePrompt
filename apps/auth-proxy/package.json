@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nitropack build",
+    "vercel-build": "nitropack build",
     "dev": "nitropack dev",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint",

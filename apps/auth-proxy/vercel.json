@@ -1,0 +1,17 @@
+{
+  "buildCommand": "nitropack build",
+  "installCommand": "cd ../.. && bun install",
+  "framework": null,
+  "functions": {
+    "routes/**/*.ts": {
+      "runtime": "nodejs22.x"
+    }
+  },
+  "outputDirectory": ".output",
+  "rewrites": [
+    {
+      "source": "/api/auth/(.*)",
+      "destination": "/api/auth/[...auth]"
+    }
+  ]
+}
