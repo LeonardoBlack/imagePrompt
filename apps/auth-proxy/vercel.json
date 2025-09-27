@@ -4,7 +4,7 @@
   "framework": null,
   "functions": {
     "routes/**/*.ts": {
-      "runtime": "nodejs22.x"
+      "runtime": "vercel/node@22.x"
     }
   },
   "outputDirectory": ".output",
