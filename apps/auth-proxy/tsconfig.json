@@ -1,4 +1,7 @@
 {
   "extends": "@saasfly/typescript-config/base.json",
-  "include": ["routes"]
+  "include": ["routes", "nitro.config.ts"],
+  "compilerOptions": {
+    "types": ["nitropack"]
+  }
 }

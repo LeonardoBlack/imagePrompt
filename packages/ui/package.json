@@ -128,6 +128,7 @@
     "./switch": "./src/switch.tsx",
     "./table": "./src/table.tsx",
     "./tabs": "./src/tabs.tsx",
+    "./textarea": "./src/textarea.tsx",
     "./text-generate-effect": "./src/text-generate-effect.tsx",
     "./text-reveal": "./src/text-reveal.tsx",
     "./toaster": "./src/toaster.tsx",

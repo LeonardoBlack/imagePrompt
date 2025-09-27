@@ -8,7 +8,7 @@ import { Label } from "@saasfly/ui/label";
 import { Textarea } from "@saasfly/ui/textarea";
 import { useToast } from "@saasfly/ui/use-toast";
 import { Loader2, Upload, Image as ImageIcon } from "lucide-react";
-import { api } from "@/trpc/client";
+import { api } from "~/trpc/client";
 
 interface ImageAnalyzerProps {
   onPromptGenerated?: (prompt: string) => void;

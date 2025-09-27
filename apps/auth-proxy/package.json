@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "nitropack build",
+    "dev": "nitropack dev",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint",
     "format": "prettier --write '**/*.{js,cjs,mjs,ts,tsx,md,json}'  --ignore-path .prettierignore",

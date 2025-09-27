@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ImageAnalyzer } from "@/components/image-analyzer";
+import { ImageAnalyzer } from "~/components/image-analyzer";
 import { getCurrentUser } from "@saasfly/auth";
 import { redirect } from "next/navigation";
 
