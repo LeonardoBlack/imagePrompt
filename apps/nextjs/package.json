@@ -2,6 +2,9 @@
   "name": "@saasfly/nextjs",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "contentlayer2 build && bun with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",

@@ -12,7 +12,7 @@ export default defineNitroConfig({
     config: {
       functions: {
         'api/auth/**/*.ts': {
-          runtime: 'nodejs18.x'
+          runtime: 'nodejs22.x'
         }
       }
     }
