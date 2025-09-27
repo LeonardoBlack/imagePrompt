@@ -1,12 +1,8 @@
 {
+  "version": 2,
   "buildCommand": "nitropack build",
   "installCommand": "cd ../.. && bun install",
   "framework": null,
-  "functions": {
-    "routes/**/*.ts": {
-      "runtime": "vercel/node@22.x"
-    }
-  },
   "outputDirectory": ".output",
   "rewrites": [
     {
