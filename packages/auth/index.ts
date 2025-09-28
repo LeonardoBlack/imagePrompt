@@ -23,5 +23,7 @@ export const authOptions = {
 }
 
 export async function getCurrentUser() {
-  return await getSessionUser();
+  // Return null for development to avoid Clerk authentication
+  return null;
+  // return await getSessionUser();
 }

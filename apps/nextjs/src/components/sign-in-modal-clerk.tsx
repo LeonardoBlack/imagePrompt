@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { OAuthStrategy } from "@clerk/types";
-import { useSignIn } from "@clerk/nextjs";
+// import { useSignIn } from "@clerk/nextjs";
 
 import { Button } from "@saasfly/ui/button";
 import * as Icons from "@saasfly/ui/icons";
@@ -15,10 +15,15 @@ import { useSigninModal } from "~/hooks/use-signin-modal";
 export const SignInClerkModal = ({ dict }: { dict: Record<string, string> }) => {
   const signInModal = useSigninModal();
   const [signInClicked, setSignInClicked] = useState(false);
-  const { signIn } = useSignIn();
+  // const { signIn } = useSignIn();
+  const signIn = null; // Disabled for development
 
   if (!signIn) {
-    return null
+    return (
+      <div className="text-center p-4">
+        <p className="text-sm text-gray-500">Sign in functionality is currently disabled for development.</p>
+      </div>
+    );
   }
 
   const signInWith = (strategy: OAuthStrategy) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useSignUp } from "@clerk/nextjs";
+// import { useSignUp } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@saasfly/ui";
@@ -22,7 +22,7 @@ export function UserClerkRegisterForm({
   dict,
   ...props
 }: UserClerkRegisterFormProps) {
-  const { isLoaded, signUp, setActive } = useSignUp();
+  // const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
   
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -34,59 +34,27 @@ export function UserClerkRegisterForm({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!isLoaded) return;
-    
+    // 禁用注册功能，直接跳转到仪表板
     setIsLoading(true);
     setError("");
     
-    try {
-      const result = await signUp.create({
-        emailAddress: email,
-        password: password,
-      });
-      
-      if (result.status === "complete") {
-        await setActive({ session: result.createdSessionId });
-        router.push(`/${lang}/dashboard`);
-      } else {
-        // 需要邮箱验证
-        router.push(`/${lang}/register-clerk/verify-email?email=${encodeURIComponent(email)}`);
-      }
-    } catch (err: any) {
-      setError(err.message || "Registration failed");
-    } finally {
-      setIsLoading(false);
-    }
+    setTimeout(() => {
+      router.push(`/${lang}/dashboard`);
+    }, 1000);
   };
 
   const handleGoogleSignUp = async () => {
-    if (!isLoaded) return;
-    
-    try {
-      await signUp.authenticateWithRedirect({
-        strategy: "oauth_google",
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: `/${lang}/dashboard`,
-      });
-    } catch (err) {
-      setError("Google sign up failed");
-    }
+    // 禁用社交登录，直接跳转
+    router.push(`/${lang}/dashboard`);
   };
 
   const handleGitHubSignUp = async () => {
-    if (!isLoaded) return;
-    
-    try {
-      await signUp.authenticateWithRedirect({
-        strategy: "oauth_github",
-        redirectUrl: "/sso-callback",
-        redirectUrlComplete: `/${lang}/dashboard`,
-      });
-    } catch (err) {
-      setError("GitHub sign up failed");
-    }
+    // 禁用社交登录，直接跳转
+    router.push(`/${lang}/dashboard`);
   };
 
+  // 移除 isLoaded 检查，直接显示表单
+  /*
   if (!isLoaded) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -94,6 +62,7 @@ export function UserClerkRegisterForm({
       </div>
     );
   }
+  */
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>

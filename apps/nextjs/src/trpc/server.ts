@@ -11,7 +11,23 @@ import { callProcedure } from "@trpc/server";
 import { TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { appRouter } from "../../../../packages/api/src/root";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
+
+// Mock auth function for development
+async function auth() {
+  return {
+    userId: null,
+    sessionId: null,
+    sessionClaims: null,
+    actor: null,
+    orgId: null,
+    orgRole: null,
+    orgSlug: null,
+    orgPermissions: null,
+    getToken: async () => null,
+    has: () => false,
+  };
+}
 
 type AuthObject = Awaited<ReturnType<typeof auth>>;
 

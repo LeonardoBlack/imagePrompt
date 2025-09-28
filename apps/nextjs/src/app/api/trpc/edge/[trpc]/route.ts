@@ -3,7 +3,23 @@ import {fetchRequestHandler} from "@trpc/server/adapters/fetch";
 
 import {createTRPCContext} from "@saasfly/api";
 import {edgeRouter} from "@saasfly/api/edge";
-import {getAuth} from "@clerk/nextjs/server";
+// import {getAuth} from "@clerk/nextjs/server";
+
+// Mock getAuth function for development
+function getAuth(req: NextRequest) {
+  return {
+    userId: null,
+    sessionId: null,
+    sessionClaims: null,
+    actor: null,
+    orgId: null,
+    orgRole: null,
+    orgSlug: null,
+    orgPermissions: null,
+    getToken: async () => null,
+    has: () => false,
+  };
+}
 
 // export const runtime = "edge";
 const createContext = async (req: NextRequest) => {

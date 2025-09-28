@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { User } from "@saasfly/auth";
-import { useClerk } from "@clerk/nextjs";
+// import { useClerk } from "@clerk/nextjs";
 
 import {
   DropdownMenu,
@@ -27,7 +27,12 @@ export function UserAccountNav({
   params: { lang },
   dict,
 }: UserAccountNavProps) {
-  const { signOut } = useClerk();
+  // const { signOut } = useClerk();
+  const signOut = () => {
+    // Mock sign out function for development
+    console.log('Sign out clicked - disabled for development');
+    window.location.href = `/${lang}/login`;
+  };
 
   return (
     <DropdownMenu>
